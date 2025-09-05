@@ -4,7 +4,7 @@ export const testimonials = [
     quote:
       "The resume builder gave me a professional edge. I started getting callbacks within days of applying.",
     author: "David Kim",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    image: "/profile1.jpeg",
     role: "Data Scientist",
     company: "Insight Labs",
   },
@@ -13,7 +13,7 @@ export const testimonials = [
     quote:
       "I loved the mock interviews. The AI feedback made me more confident and helped me land multiple offers.",
     author: "Amira Hassan",
-    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    image: "/profile2.jpeg",
     role: "UX Designer",
     company: "Creative Studio",
   },
@@ -22,7 +22,7 @@ export const testimonials = [
     quote:
       "The career guidance dashboard showed me exactly where to improve. My promotion came faster than expected.",
     author: "Lucas Martins",
-    image: "https://randomuser.me/api/portraits/men/45.jpg",
+    image: "/profile3.jpeg",
     role: "Operations Manager",
     company: "Nova Solutions",
   },
