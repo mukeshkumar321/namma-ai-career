@@ -48,7 +48,8 @@ const Navbar = () => {
 
           <Button asChild size="lg" className="flex items-center gap-2">
             <Link href="/dashboard">
-              <LayoutDashboard aria-hidden="true" /> Dashboard
+              <LayoutDashboard aria-hidden="true" />{" "}
+              <span className="hidden md:inline">Dashboard</span>
             </Link>
           </Button>
 
@@ -61,7 +62,7 @@ const Navbar = () => {
                 className="flex items-center gap-2"
               >
                 <StarsIcon aria-hidden="true" />
-                Growth Tools
+                <span className="hidden md:inline">Growth Tools</span>
                 <ChevronDownIcon aria-hidden="true" />
               </Button>
             </DropdownMenuTrigger>
