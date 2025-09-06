@@ -4,6 +4,8 @@ import StatisticCard from "./_components/statistic-card";
 import RecommendedSkill from "./_components/recommended-skill";
 import KeyIndustryTrends from "./_components/key-industry-trends";
 import SalaryRangeChart from "./_components/salary-range-chart";
+import { Suspense } from "react";
+import BarLoader from "react-spinners/BarLoader";
 
 export default function Dashboard() {
   const lastUpdatedDate = industryInsights.lastUpdated
@@ -17,16 +19,24 @@ export default function Dashboard() {
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
           Industry Insights
         </h1>
-        <p>
-          Last updated:
-          <time dateTime={industryInsights.lastUpdated}>{lastUpdatedDate}</time>
-        </p>
-        <StatisticCard industryInsights={industryInsights} />
-        <SalaryRangeChart salaryRanges={industryInsights.salaryRanges} />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <KeyIndustryTrends keyTrends={industryInsights.keyTrends} />
-          <RecommendedSkill topSkills={industryInsights.topSkills} />
-        </div>
+        <Suspense
+          fallback={
+            <BarLoader className="mt-4" width={"100%"} color="#4A5568" />
+          }
+        >
+          <p>
+            Last updated:
+            <time dateTime={industryInsights.lastUpdated}>
+              {lastUpdatedDate}
+            </time>
+          </p>
+          <StatisticCard industryInsights={industryInsights} />
+          <SalaryRangeChart salaryRanges={industryInsights.salaryRanges} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <KeyIndustryTrends keyTrends={industryInsights.keyTrends} />
+            <RecommendedSkill topSkills={industryInsights.topSkills} />
+          </div>
+        </Suspense>
       </div>
     </div>
   );

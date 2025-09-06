@@ -11,7 +11,7 @@ const KeyIndustryTrends = ({ keyTrends }: { keyTrends: string[] }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Key Industry Trends</CardTitle>
+        <CardTitle className="text-2xl md:text-3xl">Key Industry Trends</CardTitle>
         <CardDescription>
           Stay updated with the latest trends shaping the industry.
         </CardDescription>

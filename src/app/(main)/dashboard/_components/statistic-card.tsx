@@ -80,7 +80,7 @@ const StatisticCard = ({
         <CardHeader className="flex flex-row items-center justify-between space-y-0">
           <CardTitle>Market Outlook</CardTitle>
           <MarketIcon
-            className={`h-4 w-4 ${marketColor} mt-2`}
+            className={`h-4 w-4 ${marketColor}`}
             aria-label="Market outlook status"
           />
         </CardHeader>
@@ -97,7 +97,7 @@ const StatisticCard = ({
         <CardHeader className="flex flex-row items-center justify-between space-y-0">
           <CardTitle>Industry Growth</CardTitle>
           <GrowthIcon
-            className={`h-4 w-4 ${growthColor} mt-2`}
+            className={`h-4 w-4 ${growthColor}`}
             aria-label="Industry growth trend"
           />
         </CardHeader>

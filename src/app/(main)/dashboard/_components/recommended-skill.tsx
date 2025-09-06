@@ -11,9 +11,11 @@ const RecommendedSkill = ({ topSkills }: { topSkills: string[] }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Key Industry Trends</CardTitle>
+        <CardTitle className="text-2xl md:text-3xl">
+          Recommended Skills
+        </CardTitle>
         <CardDescription>
-          Stay updated with the latest trends shaping the industry.
+          Enhance your profile with these in-demand skills.
         </CardDescription>
       </CardHeader>
       <CardContent>

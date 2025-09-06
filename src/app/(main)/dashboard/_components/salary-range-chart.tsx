@@ -37,7 +37,7 @@ const SalaryRangeChart = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Salary Ranges</CardTitle>
+        <CardTitle className="text-2xl md:text-3xl">Salary Ranges</CardTitle>
         <CardDescription>
           Compare minimum, median, and maximum salaries across roles.
         </CardDescription>
