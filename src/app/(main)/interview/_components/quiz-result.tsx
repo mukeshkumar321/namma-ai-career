@@ -1,17 +1,15 @@
 import { CardContent } from "@/components/ui/card";
 import { AssessmentType } from "./assessment.types";
-import { CheckCircle2Icon, Trophy, XCircleIcon } from "lucide-react";
+import { CheckCircle2Icon, XCircleIcon } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 
 const QuizResult = ({ selectedQuiz }: { selectedQuiz: AssessmentType }) => {
-  const formattedScore =
-    Number.isInteger(selectedQuiz.quizScore)
-      ? selectedQuiz.quizScore
-      : selectedQuiz.quizScore.toFixed(1);
+  const formattedScore = Number.isInteger(selectedQuiz.quizScore)
+    ? selectedQuiz.quizScore
+    : selectedQuiz.quizScore.toFixed(1);
 
   return (
     <CardContent className="mx-auto space-y-8 max-w-full">
- 
       {/* Score Overview */}
       <div className="text-center space-y-2" aria-label="Quiz Score Overview">
         <h3 className="text-2xl font-bold">{formattedScore}%</h3>
@@ -23,12 +21,13 @@ const QuizResult = ({ selectedQuiz }: { selectedQuiz: AssessmentType }) => {
       </div>
 
       {/* Improvement Tip */}
-      {selectedQuiz.improvementTip && (
-        <div className="bg-muted p-4 rounded-lg space-y-1 break-words">
-          <p className="font-medium">Improvement Tip:</p>
-          <p className="text-muted-foreground">{selectedQuiz.improvementTip}</p>
-        </div>
-      )}
+      <div className="bg-muted p-4 rounded-lg space-y-1 break-words">
+        <p className="font-medium">Improvement Tip:</p>
+        <p className="text-muted-foreground">
+          {selectedQuiz.improvementTip ||
+            "No tips for this quiz, you did great!"}
+        </p>
+      </div>
 
       {/* Questions Review */}
       <div className="space-y-4">
