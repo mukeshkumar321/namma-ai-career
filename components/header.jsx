@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "./ui/button";
+import { ToggleTheme } from "./toggle-theme";
 import {
   PenBox,
   LayoutDashboard,
@@ -37,6 +38,7 @@ export default async function Header() {
 
         {/* Action Buttons */}
         <div className="flex items-center space-x-2 md:space-x-4">
+          <ToggleTheme />
           <SignedIn>
             <Link href="/dashboard">
               <Button
