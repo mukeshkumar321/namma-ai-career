@@ -1,64 +1,87 @@
 "use client";
 
-import { useState } from "react";
-
-import QuestionsPage from "./_components/javascript/page";
-import ReactPage from "./_components/react/page";
-import MachineCodingPage from "./_components/machine-coding/page";
-import PerformanceOptimisationPage from "./_components/performance-optimisation/page";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { Button } from "@/components/ui/button";
+import { questions as javascriptQuestions } from "@/data/javascriptQuestion";
+import QuestionsPage from "./_components/questions-page";
 
+// Tab data
 const tabs = [
-  {
-    name: "Javascript",
-    Page: QuestionsPage,
-    data: { name: "JavaScript Assessments" },
-  },
-  {
-    name: "React",
-    Page: ReactPage,
-    data: { name: "React Assessments" },
-  },
-  {
-    name: "Machine Coding",
-    Page: MachineCodingPage,
-    data: { name: "Machine Coding Assessments" },
-  },
-  {
-    name: "Performance Optimisation",
-    Page: PerformanceOptimisationPage,
-    data: { name: "Performance Optimisation Assessments" },
-  },
+  { name: "Javascript", questions: javascriptQuestions },
+  { name: "React", questions: [] },
+  { name: "Machine Coding", questions: [] },
+  { name: "Performance Optimisation", questions: [] },
 ];
 
 export default function InterviewCoursesPage() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const tabsRef = useRef([]);
 
-  const { Page, data } = tabs[activeIndex];
+  // Memoize active tab for performance
+  const activeTab = useMemo(() => tabs[activeIndex], [activeIndex]);
+  const { name, questions } = activeTab;
+
+  // Update document title when active tab changes
+  useEffect(() => {
+    document.title = `${name} Interview Questions`;
+  }, [name]);
+
+  // Focus active tab whenever activeIndex changes
+  useEffect(() => {
+    tabsRef.current[activeIndex]?.focus();
+  }, [activeIndex]);
+
+  // Keyboard navigation for tabs
+  const handleKeyDown = (e, idx) => {
+    let newIndex = idx;
+    switch (e.key) {
+      case "ArrowRight":
+        newIndex = (idx + 1) % tabs.length;
+        break;
+      case "ArrowLeft":
+        newIndex = (idx - 1 + tabs.length) % tabs.length;
+        break;
+      case "Home":
+        newIndex = 0;
+        break;
+      case "End":
+        newIndex = tabs.length - 1;
+        break;
+      default:
+        return;
+    }
+    if (newIndex !== idx) setActiveIndex(newIndex);
+  };
+
+  const activeClass = "bg-primary text-primary-foreground shadow-md";
+  const inactiveClass = "bg-card text-foreground hover:bg-muted";
 
   return (
-    <div className="relative mx-auto max-w-5xl px-4">
-      <div className="grid-background" />
+    <div className="relative mx-auto px-4 py-8">
+      <div className="grid-background absolute inset-0 -z-10" />
+
       {/* Tabs */}
       <nav
         role="tablist"
+        aria-label="Interview Topics"
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 rounded-lg p-2 mb-6 bg-secondary"
       >
         {tabs.map((tab, idx) => {
           const isActive = idx === activeIndex;
-
           return (
             <Button
               key={tab.name}
-              onClick={() => setActiveIndex(idx)}
+              ref={(el) => (tabsRef.current[idx] = el)}
+              id={`tab-${idx}`}
               role="tab"
               aria-selected={isActive}
-              className={`flex-1 text-center px-4 py-2 rounded-lg font-semibold transition-colors duration-200 shadow
-                ${
-                  isActive
-                    ? "bg-primary text-primary-foreground shadow-md"
-                    : "bg-card text-foreground hover:bg-muted"
-                }`}
+              aria-controls={`tabpanel-${idx}`}
+              tabIndex={isActive ? 0 : -1}
+              onClick={() => setActiveIndex(idx)}
+              onKeyDown={(e) => handleKeyDown(e, idx)}
+              className={`flex-1 text-center px-4 py-2 rounded-lg font-semibold transition-colors duration-200 shadow ${
+                isActive ? activeClass : inactiveClass
+              }`}
             >
               {tab.name}
             </Button>
@@ -66,9 +89,14 @@ export default function InterviewCoursesPage() {
         })}
       </nav>
 
-      {/* Active Page */}
-      <div className="space-y-6">
-        <Page data={data} />
+      {/* Active Tab Content */}
+      <div
+        id={`tabpanel-${activeIndex}`}
+        role="tabpanel"
+        aria-labelledby={`tab-${activeIndex}`}
+        className="space-y-6"
+      >
+        <QuestionsPage questions={questions} name={name} />
       </div>
     </div>
   );
