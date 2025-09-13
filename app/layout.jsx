@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import Header from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { dark } from "@clerk/themes";
+import "prismjs/themes/prism-tomorrow.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

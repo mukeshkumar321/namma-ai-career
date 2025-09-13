@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import JavaScriptPage from "./_components/javascript/page";
+import QuestionsPage from "./_components/javascript/page";
 import ReactPage from "./_components/react/page";
 import MachineCodingPage from "./_components/machine-coding/page";
 import PerformanceOptimisationPage from "./_components/performance-optimisation/page";
@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 const tabs = [
   {
     name: "Javascript",
-    Page: JavaScriptPage,
+    Page: QuestionsPage,
     data: { name: "JavaScript Assessments" },
   },
   {
