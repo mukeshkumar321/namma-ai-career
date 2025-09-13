@@ -3,14 +3,17 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { questions as javascriptQuestions } from "@/data/javascriptQuestion";
+import { questions as htmlQuestions } from "@/data/htmlQuestions";
+import { questions as cssQuestions } from "@/data/cssQuestions";
+import { questions as reactQuestions } from "@/data/react";
 import QuestionsPage from "./_components/questions-page";
 
 // Tab data
 const tabs = [
+  { name: "HTML", questions: htmlQuestions },
+  { name: "CSS", questions: cssQuestions },
   { name: "Javascript", questions: javascriptQuestions },
-  { name: "React", questions: [] },
-  { name: "Machine Coding", questions: [] },
-  { name: "Performance Optimisation", questions: [] },
+  { name: "React", questions: reactQuestions },
 ];
 
 export default function InterviewCoursesPage() {

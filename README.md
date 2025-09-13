@@ -1,20 +1,45 @@
-# Full Stack AI Career Coach with Next JS, Neon DB, Tailwind, Prisma, Inngest, Shadcn UI Tutorial 🔥🔥
-## https://youtu.be/UbXpRv5ApKA
+# Namma AI
 
-![sensai](https://github.com/user-attachments/assets/eee79242-4056-4d19-b655-2873788979e1)
+A Next.js project for building an AI-powered career coach application.
 
-### Make sure to create a `.env` file with following variables -
+## Features
 
-```
-DATABASE_URL=
+- AI-driven career guidance
+- Interactive user interface
+- Modern Next.js architecture
 
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
+## Getting Started
 
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/onboarding
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
+1. **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd namma-ai
+    ```
 
-GEMINI_API_KEY=
-```
+2. **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3. **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Project Structure
+
+- `/pages` - Application routes
+- `/components` - Reusable UI components
+- `/public` - Static assets
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/)
+- [React](https://react.dev/)
+- [Node.js](https://nodejs.org/)
+
+## License
+
+This project is licensed under the MIT License.
