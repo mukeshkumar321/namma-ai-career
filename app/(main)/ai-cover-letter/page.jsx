@@ -8,7 +8,7 @@ export default async function CoverLetterPage() {
   const coverLetters = await getCoverLetters();
 
   return (
-    <div className="container relative">
+    <div className="container relative px-5">
       <div className="grid-background" />
       <div className="flex flex-col md:flex-row gap-2 items-center justify-between mb-5">
         <h1 className="text-6xl font-bold gradient-title">My Cover Letters</h1>
