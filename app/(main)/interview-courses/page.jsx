@@ -7,6 +7,12 @@ import { questions as htmlQuestions } from "@/data/htmlQuestions";
 import { questions as cssQuestions } from "@/data/cssQuestions";
 import { questions as reactQuestions } from "@/data/react";
 import QuestionsPage from "./_components/questions-page";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 // Tab data
 const tabs = [
@@ -16,8 +22,12 @@ const tabs = [
   { name: "React", questions: reactQuestions },
 ];
 
+// Levels for each section
+const levels = ["Beginner", "Intermediate", "Advanced"];
+
 export default function InterviewCoursesPage() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeLevel, setActiveLevel] = useState("Beginner");
   const tabsRef = useRef([]);
 
   // Memoize active tab for performance
@@ -28,6 +38,11 @@ export default function InterviewCoursesPage() {
   useEffect(() => {
     document.title = `${name} Interview Questions`;
   }, [name]);
+
+  // Reset level to beginner when switching tab
+  useEffect(() => {
+    setActiveLevel("Beginner");
+  }, [activeIndex]);
 
   // Focus active tab whenever activeIndex changes
   useEffect(() => {
@@ -99,7 +114,33 @@ export default function InterviewCoursesPage() {
         aria-labelledby={`tab-${activeIndex}`}
         className="space-y-6"
       >
-        <QuestionsPage questions={questions} name={name} />
+        {/* Subsection Selector */}
+        <div className="mb-4">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="w-48 justify-between">
+                {activeLevel}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-48">
+              {levels.map((level) => (
+                <DropdownMenuItem
+                  key={level}
+                  onClick={() => setActiveLevel(level)}
+                  className={activeLevel === level ? "bg-muted" : ""}
+                >
+                  {level}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+
+        {/* Questions Component */}
+        <QuestionsPage
+          questions={questions[activeLevel.toLowerCase()]}
+          name={`${name} - ${activeLevel}`}
+        />
       </div>
     </div>
   );
