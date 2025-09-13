@@ -46,9 +46,9 @@ const HeroSection = () => {
               Get Started
             </Button>
           </Link>
-          <Link href="/dashboard">
+          <Link href="/interview-courses">
             <Button size="lg" variant="outline" className="px-8">
-              Explore Features
+              Interview Preparation
             </Button>
           </Link>
         </div>

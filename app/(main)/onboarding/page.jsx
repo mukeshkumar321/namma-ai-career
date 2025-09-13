@@ -12,7 +12,8 @@ export default async function OnboardingPage() {
   }
 
   return (
-    <main>
+    <main className="container relative">
+      <div className="grid-background" />
       <OnboardingForm industries={industries} />
     </main>
   );

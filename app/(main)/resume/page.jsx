@@ -5,7 +5,8 @@ export default async function ResumePage() {
   const resume = await getResume();
 
   return (
-    <div className="container mx-auto py-6">
+    <div className="relative container mx-auto py-6">
+      <div className="grid-background" />
       <ResumeBuilder initialContent={resume?.content} />
     </div>
   );
