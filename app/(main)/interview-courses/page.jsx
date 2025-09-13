@@ -13,13 +13,14 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import { ChevronDown, FileCode, Palette, Code2, Atom } from "lucide-react";
 
 // Tab data
 const tabs = [
-  { name: "HTML", questions: htmlQuestions },
-  { name: "CSS", questions: cssQuestions },
-  { name: "Javascript", questions: javascriptQuestions },
-  { name: "React", questions: reactQuestions },
+  { name: "HTML", icon: <FileCode />, questions: htmlQuestions },
+  { name: "CSS", icon: <Palette />, questions: cssQuestions },
+  { name: "Javascript", icon: <Code2 />, questions: javascriptQuestions },
+  { name: "React", icon: <Atom />, questions: reactQuestions },
 ];
 
 // Levels for each section
@@ -101,6 +102,7 @@ export default function InterviewCoursesPage() {
                 isActive ? activeClass : inactiveClass
               }`}
             >
+              {tab.icon}
               {tab.name}
             </Button>
           );
@@ -120,6 +122,7 @@ export default function InterviewCoursesPage() {
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="w-48 justify-between">
                 {activeLevel}
+                <ChevronDown className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-48">
