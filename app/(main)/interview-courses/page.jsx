@@ -23,13 +23,18 @@ const tabs = [
   { name: "React", icon: <Atom />, questions: reactQuestions },
 ];
 
-// Levels for each section
-const levels = ["Beginner", "Intermediate", "Advanced"];
-
 export default function InterviewCoursesPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeLevel, setActiveLevel] = useState("Beginner");
   const tabsRef = useRef([]);
+
+  // Levels for each section
+  const levels = useMemo(() => {
+    // Get keys from the active tab's questions object
+    return Object.keys(tabs[activeIndex].questions).map(
+      (level) => level.charAt(0).toUpperCase() + level.slice(1)
+    );
+  }, [activeIndex]);
 
   // Memoize active tab for performance
   const activeTab = useMemo(() => tabs[activeIndex], [activeIndex]);
@@ -120,7 +125,7 @@ export default function InterviewCoursesPage() {
         <div className="mb-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="w-48 justify-between">
+              <Button variant="destructive" className="w-48 justify-between">
                 {activeLevel}
                 <ChevronDown className="h-4 w-4" />
               </Button>

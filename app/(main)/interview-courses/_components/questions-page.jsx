@@ -8,9 +8,12 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import HighlightedCode from "@/components/highlighted-code";
+import ReactMarkdown from "react-markdown";
 
 const AnswerText = ({ content }) => (
-  <p className="text-muted-foreground">{content}</p>
+  <ReactMarkdown className="text-muted-foreground prose prose-sm max-w-full">
+    {content}
+  </ReactMarkdown>
 );
 
 const AnswerCode = ({ content, language }) => (

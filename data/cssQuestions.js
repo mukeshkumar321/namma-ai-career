@@ -1,1 +1,5 @@
-export const questions = [];
+export const questions = {
+    beginner: [],
+    intermediate: [],
+    advanced: [],
+};
