@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import { Button } from "@/components/ui/button";
-import { questions as javascriptQuestions } from "@/data/javascriptQuestion";
+import { questions as javascriptQuestions } from "@/data/javascrip-questions/index";
 import { questions as htmlQuestions } from "@/data/htmlQuestions";
 import { questions as cssQuestions } from "@/data/cssQuestions";
-import { questions as reactQuestions } from "@/data/reactQuestions";
+import { questions as reactQuestions } from "@/data/react-questions/index";
 import QuestionsPage from "./_components/questions-page";
 import {
   DropdownMenu,
@@ -29,7 +29,10 @@ export default function InterviewCoursesPage() {
   const tabsRef = useRef([]);
 
   // Levels for each section (keys from questions object)
-  const levels = useMemo(() => Object.keys(tabs[activeIndex].questions), [activeIndex]);
+  const levels = useMemo(
+    () => Object.keys(tabs[activeIndex].questions),
+    [activeIndex]
+  );
 
   // Active tab
   const activeTab = tabs[activeIndex];
@@ -146,7 +149,9 @@ export default function InterviewCoursesPage() {
         {activeLevel && (
           <QuestionsPage
             questions={questions[activeLevel]}
-            name={`${name} - ${activeLevel.charAt(0).toUpperCase() + activeLevel.slice(1)}`}
+            name={`${name} - ${
+              activeLevel.charAt(0).toUpperCase() + activeLevel.slice(1)
+            }`}
           />
         )}
       </div>

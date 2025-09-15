@@ -1,0 +1,1 @@
+export const call_bind_apply_questions = [];

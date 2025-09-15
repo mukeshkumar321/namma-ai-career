@@ -1,0 +1,1 @@
+export const closures_questions = [];
