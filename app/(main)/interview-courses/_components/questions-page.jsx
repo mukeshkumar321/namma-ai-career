@@ -47,6 +47,16 @@ const AnswerTable = ({ headers = [], rows = [] }) => (
   </div>
 );
 
+// ✅ New AnswerList component
+const AnswerList = ({ content }) => (
+  <div className="space-y-1 text-muted-foreground">
+    {content.map((point, i) => (
+      <ReactMarkdown key={i}>{String(point)}</ReactMarkdown>
+    ))}
+  </div>
+);
+
+
 function QuestionsPage({ questions, name }) {
   if (!questions || questions.length === 0) {
     return (
@@ -98,6 +108,8 @@ function QuestionsPage({ questions, name }) {
                           rows={item.content?.rows}
                         />
                       );
+                    case "list": // ✅ handle lists
+                      return <AnswerList key={idx} content={item.content} />;
                     default:
                       return null;
                   }

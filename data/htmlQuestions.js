@@ -1902,54 +1902,67 @@ btn.addEventListener('click', () => {
             ]
         },
 
-        // 7. What are Semantic Elements?
+        // 7. What are semantic and non semantic tags in HTML? Explain in detail.
         {
             id: 7,
-            question: "What are Semantic Elements?",
+            question: "What are semantic and non semantic tags in HTML? Explain in detail.",
             answer: [
                 {
                     type: "text",
-                    content: `Semantic elements are HTML5 elements that clearly describe their meaning in a human- and machine-readable way. They improve code readability, SEO, and accessibility.`
+                    content: "Semantic tags are HTML elements that clearly describe their meaning in a human- and machine-readable way (for example: <header>, <article>, <p>). Non-semantic tags are generic elements that do not provide meaning about their content and are mainly used for styling or grouping (for example: <div>, <span>)."
+                },
+                {
+                    type: "list",
+                    content: [
+                        "✅ Benefits of Semantic Tags:",
+                        "1. SEO Friendly – search engines can understand content structure.",
+                        "2. Accessibility – screen readers and assistive technologies work better.",
+                        "3. Readable Code – developers can easily understand the structure.",
+                        "❌ Non-semantic Tags – useful only when no semantic element fits (e.g., <div> for layout, <span> for inline styling)."
+                    ]
                 },
                 {
                     type: "table",
                     content: {
-                        headers: ["Semantic Element", "Purpose"],
+                        headers: ["Tag / Element", "Type", "Meaning / Usage"],
                         rows: [
-                            ["<header>", "Defines introductory content or navigation links"],
-                            ["<nav>", "Defines a navigation section"],
-                            ["<article>", "Represents self-contained content such as an article or blog post"],
-                            ["<section>", "Defines a section in the document"],
-                            ["<footer>", "Defines footer content for a section or page"],
-                            ["<aside>", "Defines content indirectly related to the main content (e.g., sidebar)"]
+                            ["<h1>–<h6>", "Semantic", "Headings of different levels; H1 is the most important."],
+                            ["<p>", "Semantic", "Represents a paragraph of text."],
+                            ["<strong>", "Semantic", "Important/strongly emphasized text (bold + meaning)."],
+                            ["<em>", "Semantic", "Emphasized or stressed text (italic + meaning)."],
+                            ["<header>", "Semantic", "Top section of a page or section (logo, nav, heading)."],
+                            ["<footer>", "Semantic", "Bottom section (copyright, links)."],
+                            ["<main>", "Semantic", "Primary content of the page (only one per page)."],
+                            ["<nav>", "Semantic", "Navigation menu containing links."],
+                            ["<section>", "Semantic", "Logical grouping of related content, usually with its own heading."],
+                            ["<article>", "Semantic", "Independent piece of content (e.g., blog post, news article)."],
+                            ["<aside>", "Semantic", "Side content like ads, related links, or a sidebar."],
+                            ["<figure> / <figcaption>", "Semantic", "Media content with an optional caption."],
+                            ["<img>", "Semantic", "Embeds an image (with alt text for meaning)."],
+                            ["<form>, <label>, <input>, <button>", "Semantic", "Form elements with clear purposes."],
+                            ["<div>", "Non-semantic", "Generic block container; no meaning; used for layout/styling."],
+                            ["<span>", "Non-semantic", "Generic inline container; used for styling inline text."],
+                            ["<b>, <i>, <u>", "Non-semantic", "Styling elements (bold, italic, underline) with no semantic meaning."],
+                            ["<font>, <center>", "Non-semantic / Deprecated", "Old styling tags (should not be used; use CSS instead)."]
                         ]
                     }
                 },
                 {
                     type: "code",
-                    content: `<!-- Example of semantic HTML5 elements -->
-<header>
-  <h1>My Blog</h1>
-  <nav>
-    <a href="/home">Home</a> | <a href="/about">About</a>
-  </nav>
-</header>
-
-<section>
-  <article>
-    <h2>First Post</h2>
-    <p>This is an article inside a section.</p>
-  </article>
-</section>
-
-<aside>
-  <p>Related links go here.</p>
-</aside>
-
-<footer>
-  <p>&copy; 2025 My Blog</p>
-</footer>`,
-                    language: "html"
+                    content: "<!-- Example of semantic vs non-semantic -->\n<header>\n  <h1>My Blog</h1>\n  <nav>\n    <a href=\"#\">Home</a> | <a href=\"#\">About</a>\n  </nav>\n</header>\n\n<main>\n  <article>\n    <h2>Semantic HTML</h2>\n    <p>This is an example of a blog post using semantic tags.</p>\n  </article>\n\n  <aside>\n    <p>Related links and ads go here.</p>\n  </aside>\n</main>\n\n<footer>\n  <p>&copy; 2025 My Blog</p>\n</footer>\n\n<!-- Non-semantic equivalent -->\n<div class=\"header\">...</div>\n<div class=\"main\">...</div>\n<div class=\"footer\">...</div>"
+                },
+                {
+                    type: "list",
+                    content: [
+                        "👉 Quick daily-use guide:",
+                        "• Use <nav> for navigation menus.",
+                        "• Wrap primary content in <main> (only once per page).",
+                        "• Use <section> for grouping related content with a heading.",
+                        "• Use <article> for standalone/distributable content.",
+                        "• Prefer <strong>/<em> instead of <b>/<i> for meaningful emphasis.",
+                        "• Use <figure>/<figcaption> for images with captions.",
+                        "• Use <div>/<span> only when no semantic element fits."
+                    ]
                 }
             ]
         },
