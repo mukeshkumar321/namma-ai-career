@@ -1,5 +1,5 @@
 import { var_let_const_questions } from "./var-let-const";
-import { map_filter_reduce_questions } from "./map-filter-reduce";
+import { array_methods_questions } from "./array_methods";
 import { functions_questions } from "./functions";
 import { closures_questions } from "./closures";
 import { currying_questions } from "./currying";
@@ -18,7 +18,7 @@ import { error_handling_questions } from "./error-handling";
 
 export const questions = {
     var_let_const: var_let_const_questions,
-    map_filter_reduce: map_filter_reduce_questions,
+    array_methods: array_methods_questions,
     functions: functions_questions,
     closures: closures_questions,
     currying: currying_questions,

@@ -79,7 +79,7 @@ export default function InterviewCoursesPage() {
   const inactiveClass = "bg-card text-foreground hover:bg-muted";
 
   return (
-    <div className="relative mx-auto px-4 py-8">
+    <div className="relative mx-auto px-4 py-2">
       <div className="grid-background absolute inset-0 -z-10" />
 
       {/* Tabs */}
