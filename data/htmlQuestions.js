@@ -2820,5 +2820,1073 @@ customElements.define('my-component', MyComponent);
             ]
         },
     ],
+    other: [
+        {
+            id: 1,
+            question: "What are semantic and non-semantic HTML tags? Give examples.",
+            answer: [
+                {
+                    type: "text",
+                    content: "Semantic tags clearly describe their meaning and purpose in the HTML document. They improve accessibility, SEO, and code readability. Non-semantic tags do not convey meaning by themselves; they are mostly used for styling or generic grouping."
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Semantic tags examples:** <header>, <footer>, <article>, <section>, <nav>, <aside>, <main>",
+                        "**Non-semantic tags examples:** <div>, <span>"
+                    ]
+                },
+                {
+                    type: "code",
+                    content: `<!-- Semantic Example -->
+<article>
+  <h2>Blog Post Title</h2>
+  <p>This is a blog post content.</p>
+</article>
+
+<!-- Non-Semantic Example -->
+<div class="blog-post">
+  <h2>Blog Post Title</h2>
+  <p>This is a blog post content.</p>
+</div>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Prefer semantic tags for better SEO and accessibility.",
+                        "**Best Practice:** Use non-semantic tags only when no suitable semantic alternative exists."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 2,
+            question: "Explain the difference between block-level and inline elements.",
+            answer: [
+                {
+                    type: "text",
+                    content: "In HTML, elements are categorized into block-level and inline elements based on how they flow in the document."
+                },
+                {
+                    type: "table",
+                    content: {
+                        headers: ["Feature", "Block-level Elements", "Inline Elements"],
+
+                        rows: [
+                            ["Default Behavior", "Start on a new line and take full width", "Stay inline and only take required width"],
+                            ["Examples", "<div>, <p>, <section>, <article>, <header>", "<span>, <a>, <strong>, <em>"],
+                            ["Box Model", "Can have width, height, margin, padding", "Width/height usually ignored, margin/padding limited"],
+                            ["Use Case", "Layout structure", "Styling text, inline grouping"]
+                        ]
+                    }
+                },
+                {
+                    type: "code",
+                    content: `<!-- Block Example -->
+<p>This is a block element. It starts on a new line.</p>
+
+<!-- Inline Example -->
+<span>This is inline text</span> with another <a href="#">inline link</a>.`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use block elements for page structure and layout.",
+                        "**Best Practice:** Use inline elements for styling or linking text without breaking flow."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 3,
+            question: "What are void elements in HTML?",
+            answer: [
+                {
+                    type: "text",
+                    content: "Void elements are HTML elements that do not have closing tags or inner content. They are self-closing and typically used for media, line breaks, or input fields."
+                },
+                {
+                    type: "list",
+                    content: [
+                        "Examples: <img>, <br>, <hr>, <input>, <meta>, <link>"
+                    ]
+                },
+                {
+                    type: "code",
+                    content: `<!-- Void Elements Examples -->
+<img src="logo.png" alt="Company Logo">
+<br>
+<input type="text" placeholder="Enter name">
+<hr>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Always include necessary attributes (like 'alt' for <img>) for accessibility.",
+                        "**Best Practice:** Do not write closing tags for void elements, as it is invalid HTML."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 4,
+            question: "What are the differences between <div> and <section>? When would you use each?",
+            answer: [
+                {
+                    type: "text",
+                    content: "<div> is a non-semantic generic container used mainly for grouping elements, while <section> is a semantic tag meant to define a thematically grouped content block."
+                },
+                {
+                    type: "table",
+                    content: {
+                        headers: ["Aspect", "<div>", "<section>"],
+                        rows: [
+
+                            ["Meaning", "Generic container with no semantic meaning", "Represents a standalone section of related content"],
+                            ["SEO/Accessibility", "No direct benefit", "Improves SEO and screen-reader understanding"],
+                            ["Use Case", "For styling, layout, wrappers", "For grouping thematic content with headings"]
+                        ]
+                    }
+                },
+                {
+                    type: "code",
+                    content: `<!-- Using div -->
+<div class="container">
+  <h2>About Us</h2>
+  <p>Company info goes here...</p>
+</div>
+
+<!-- Using section -->
+<section>
+  <h2>About Us</h2>
+  <p>Company info goes here...</p>
+</section>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use <section> when content is thematic and has a heading.",
+                        "**Best Practice:** Use <div> for styling/layout when no semantic meaning is required."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 5,
+            question: "Explain the difference between inline, internal, and external styles.",
+            answer: [
+                {
+                    type: "text",
+                    content: "CSS can be applied to HTML in three ways: inline styles, internal styles, and external styles."
+                },
+                {
+                    type: "table",
+                    content: {
+                        headers: ["Method", "Definition", "Example", "Pros", "Cons"],
+                        rows: [
+
+                            ["Inline", "Style applied directly on element using 'style' attribute", `<p style=\"color:red\">`, "Quick and specific", "Hard to maintain, poor separation of concerns"],
+                            ["Internal", "Defined inside <style> tag in <head>", `<style>p{color:red}</style>`, "Good for single-page apps", "Not reusable across pages"],
+                            ["External", "Defined in separate .css file linked via <link>", `<link rel=\"stylesheet\" href=\"style.css\">`, "Reusable, maintainable, cacheable", "Extra HTTP request if not optimized"]
+                        ]
+                    }
+                },
+                {
+                    type: "code",
+                    content: `<!-- Inline -->
+<p style="color: red;">Hello World</p>
+
+<!-- Internal -->
+<head>
+  <style>
+    p { color: blue; }
+  </style>
+</head>
+
+<!-- External -->
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Avoid inline styles except for very quick testing.",
+                        "**Best Practice:** Prefer external stylesheets for maintainability and caching.",
+                        "**Best Practice:** Use internal styles only when page-specific overrides are needed."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 6,
+            question: "How do you structure an accessible and SEO-friendly webpage in HTML5?",
+            answer: [
+                {
+                    type: "text",
+                    content: "An accessible and SEO-friendly webpage follows semantic HTML5 structure, proper headings, descriptive attributes, and ensures compatibility with assistive technologies like screen readers."
+                },
+                {
+                    type: "code",
+                    content: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Tech blog about programming and web development">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessible Page Example</title>
+</head>
+<body>
+  <header>
+    <h1>My Tech Blog</h1>
+    <nav aria-label="Main Navigation">
+      <ul>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <article id="articles">
+      <h2>Understanding Semantic HTML</h2>
+      <p>Semantic HTML improves SEO and accessibility.</p>
+    </article>
+  </main>
+  
+  <footer id="about">
+    <p>&copy; 2025 My Blog</p>
+  </footer>
+</body>
+</html>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use <main>, <article>, <section>, <header>, <footer> for structure.",
+                        "**Best Practice:** Always include `lang` in <html> and `alt` text for images.",
+                        "**Best Practice:** Maintain a clear heading hierarchy (<h1> to <h6>).",
+                        "**Best Practice:** Provide descriptive <title> and <meta description> for SEO."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 7,
+            question: "What new form input types were introduced in HTML5?",
+            answer: [
+                {
+                    type: "text",
+                    content: "HTML5 introduced new input types to improve user experience, form validation, and accessibility by providing context-aware controls."
+                },
+                {
+                    type: "list",
+                    content: [
+                        "<email>, <url>, <tel>",
+                        "<number>, <range>",
+                        "<date>, <datetime-local>, <month>, <week>, <time>",
+                        "<color>, <search>"
+                    ]
+                },
+                {
+                    type: "code",
+                    content: `<form>
+  <input type="email" placeholder="Enter email" required>
+  <input type="number" min="1" max="10">
+  <input type="date">
+  <input type="color" value="#ff0000">
+</form>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use HTML5 input types for better UX (mobile keyboards adapt accordingly).",
+                        "**Best Practice:** Combine with validation attributes (required, pattern) for reliability.",
+                        "**Best Practice:** Always provide fallback handling in case older browsers don’t support them."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 8,
+            question: "How does the novalidate attribute work in forms?",
+            answer: [
+                {
+                    type: "text",
+                    content: "The `novalidate` attribute tells the browser to skip built-in HTML5 validation when submitting a form. It allows developers to handle validation manually (e.g., via JavaScript)."
+                },
+                {
+                    type: "code",
+                    content: `<!-- Form without HTML5 validation -->
+<form novalidate>
+  <input type="email" placeholder="Enter email" required>
+  <button type="submit">Submit</button>
+</form>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use `novalidate` when you want complete control over validation logic.",
+                        "**Best Practice:** Combine with JS frameworks/libraries that provide custom validation messages."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 9,
+            question: "What’s the difference between required, readonly, and disabled attributes?",
+            answer: [
+                {
+                    type: "table",
+                    content: {
+                        headers: ["Attribute", "Definition", "Behavior", "Example Use Case"],
+                        rows: [
+
+                            ["required", "Ensures field must be filled before form submission", "Blocks form submission if empty", "Email input must be provided"],
+                            ["readonly", "Field value cannot be changed but can be copied", "Included in form submission", "Pre-filled username"],
+                            ["disabled", "Field is not editable and excluded from submission", "Ignored during form submission", "Temporarily unavailable option"]
+                        ]
+                    }
+                },
+                {
+                    type: "code",
+                    content: `<form>
+  <input type="text" required placeholder="Required field">
+  <input type="text" value="Read-only" readonly>
+  <input type="text" value="Disabled" disabled>
+  <button type="submit">Submit</button>
+</form>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use required for mandatory fields.",
+                        "**Best Practice:** Use readonly when user should see but not edit.",
+                        "**Best Practice:** Use disabled for inactive/unavailable fields."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 10,
+            question: "How does the autocomplete attribute in forms improve UX?",
+            answer: [
+                {
+                    type: "text",
+                    content: "The `autocomplete` attribute helps browsers suggest or autofill values in input fields based on previous entries or stored user data, improving speed and accessibility."
+                },
+                {
+                    type: "code",
+                    content: `<form>
+  <input type="text" name="name" autocomplete="name" placeholder="Full Name">
+  <input type="email" name="email" autocomplete="email" placeholder="Email">
+  <input type="password" name="password" autocomplete="new-password" placeholder="Password">
+  <button type="submit">Submit</button>
+</form>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Always set autocomplete explicitly to guide browsers (e.g., autocomplete='email').",
+                        "**Best Practice:** Use autocomplete='off' for sensitive data (e.g., OTP fields).",
+                        "**Best Practice:** Helps users with disabilities by reducing input effort."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 11,
+            question: "What’s the difference between GET and POST methods in form submission?",
+            answer: [
+                {
+                    type: "text",
+                    content: "GET and POST are two commonly used HTTP methods for sending form data. They differ in how the data is transmitted and their typical use cases."
+                },
+                {
+                    type: "table",
+                    content: {
+                        headers: ["Aspect", "GET", "POST"],
+                        rows: [
+
+                            ["Data Transmission", "Appended to URL as query string", "Sent in request body"],
+                            ["Visibility", "Visible in browser URL (less secure)", "Hidden from URL (more secure)"],
+                            ["Data Length", "Limited (depends on browser, ~2000 chars)", "No significant limit"],
+                            ["Use Case", "Fetching or bookmarking data (search queries)", "Sensitive or large data (login, file upload)"]
+                        ]
+                    }
+                },
+                {
+                    type: "code",
+                    content: `<!-- GET Example -->
+<form method="GET" action="/search">
+  <input type="text" name="q" placeholder="Search...">
+  <button type="submit">Search</button>
+</form>
+
+<!-- POST Example -->
+<form method="POST" action="/login">
+  <input type="text" name="username">
+  <input type="password" name="password">
+  <button type="submit">Login</button>
+</form>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use GET for idempotent operations like search.",
+                        "**Best Practice:** Use POST for sensitive data or when data changes server state."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 12,
+            question: "What is the difference between <canvas> and <svg>?",
+            answer: [
+                {
+                    type: "text",
+                    content: "<canvas> and <svg> are both used for graphics in HTML5, but they differ in rendering approach and use cases."
+                },
+                {
+                    type: "table",
+                    content: {
+                        headers: ["Aspect", "<canvas>", "<svg>"],
+                        rows: [
+
+                            ["Rendering", "Pixel-based (bitmap)", "Vector-based (scales without loss)"],
+                            ["DOM Integration", "Drawn via JS API, no DOM elements", "Each shape is a DOM element"],
+                            ["Performance", "Better for real-time graphics, games", "Better for static/interactive graphics"],
+                            ["Scalability", "Loses quality when scaled", "Infinite scalability"],
+                            ["Accessibility", "Harder to make accessible", "More accessible with ARIA and semantics"]
+                        ]
+                    }
+                },
+                {
+                    type: "code",
+                    content: `<!-- Canvas Example -->
+<canvas id="myCanvas" width="200" height="100"></canvas>
+<script>
+  const c = document.getElementById("myCanvas");
+  const ctx = c.getContext("2d");
+  ctx.fillStyle = "blue";
+  ctx.fillRect(20, 20, 150, 50);
+</script>
+
+<!-- SVG Example -->
+<svg width="200" height="100">
+  <rect width="150" height="50" x="20" y="20" fill="blue"></rect>
+</svg>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use <canvas> for dynamic, high-performance graphics.",
+                        "**Best Practice:** Use <svg> for scalable icons, charts, and vector illustrations."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 13,
+            question: "How do you provide fallback content for <video> and <audio> elements?",
+            answer: [
+                {
+                    type: "text",
+                    content: "Fallback content ensures that users with unsupported browsers still get access to alternative content when <video> or <audio> elements are not supported."
+                },
+                {
+                    type: "code",
+                    content: `<video controls>
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support HTML5 video. 
+  <a href="movie.mp4">Download the video</a> instead.
+</video>
+
+<audio controls>
+  <source src="sound.mp3" type="audio/mpeg">
+  <source src="sound.ogg" type="audio/ogg">
+  Your browser does not support the audio element.
+</audio>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Provide multiple formats (e.g., mp4 + ogg) for compatibility.",
+                        "**Best Practice:** Always include fallback text or download links."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 14,
+            question: "How can you make images responsive in HTML?",
+            answer: [
+                {
+                    type: "text",
+                    content: "Responsive images adapt to different screen sizes and resolutions. HTML5 provides attributes and techniques for this."
+                },
+                {
+                    type: "list",
+                    content: [
+                        "Use CSS `max-width: 100%; height: auto;`",
+                        "Use `srcset` and `sizes` for responsive image loading",
+                        "Use `<picture>` for art direction (different images for different screens)"
+                    ]
+                },
+                {
+                    type: "code",
+                    content: `<!-- CSS responsive -->
+<img src="image.jpg" style="max-width:100%; height:auto;">
+
+<!-- Srcset example -->
+<img src="small.jpg" 
+     srcset="small.jpg 480w, medium.jpg 800w, large.jpg 1200w" 
+     sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px" 
+     alt="Responsive Example">
+
+<!-- Picture element -->
+<picture>
+  <source media="(max-width: 600px)" srcset="small.jpg">
+  <source media="(max-width: 1200px)" srcset="medium.jpg">
+  <img src="large.jpg" alt="Art directed image">
+</picture>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Always set `alt` for accessibility.",
+                        "**Best Practice:** Use `srcset` for performance (load smaller images on mobile).",
+                        "**Best Practice:** Use `<picture>` when you need different images for different breakpoints."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 15,
+            question: "What is the purpose of defer and async attributes in <script> tags?",
+            answer: [
+                {
+                    type: "text",
+                    content: "Both `defer` and `async` are used to improve performance by controlling how external JavaScript files are loaded and executed."
+                },
+                {
+                    type: "table",
+                    content: {
+                        headers: ["Aspect", "defer", "async"],
+                        rows: [
+                            ["Execution Order", "Executes in order after HTML parsing completes", "Executes immediately when loaded (not guaranteed order)"],
+                            ["HTML Parsing", "Continues parsing while script loads", "Parsing paused when script executes"],
+                            ["Use Case", "When script depends on DOM or other scripts", "When script is independent (analytics, ads)"]
+                        ]
+                    }
+                },
+                {
+                    type: "code",
+                    content: `<!-- Defer: preserves order, runs after parsing -->
+<script src="main.js" defer></script>
+
+<!-- Async: faster, order not guaranteed -->
+<script src="analytics.js" async></script>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use `defer` for main scripts that rely on DOM or other scripts.",
+                        "**Best Practice:** Use `async` for independent scripts (tracking, ads)."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 16,
+            question: "What’s the difference between <link rel='preload'>, <prefetch>, and <preconnect>?",
+            answer: [
+                {
+                    type: "text",
+                    content: "These resource hints help browsers optimize loading by managing how resources are fetched ahead of time."
+                },
+                {
+                    type: "table",
+                    content: {
+                        headers: ["Attribute", "Purpose", "Example Use Case"],
+                        rows: [
+
+                            ["preload", "Load critical resource early", "<link rel='preload' href='style.css' as='style'>"],
+                            ["prefetch", "Load resource for future navigation", "<link rel='prefetch' href='next-page.js'>"],
+                            ["preconnect", "Establish early connection (DNS, TLS)", "<link rel='preconnect' href='https://cdn.example.com'>"]
+                        ]
+                    }
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use preload for CSS, fonts, or critical scripts.",
+                        "**Best Practice:** Use prefetch for assets likely needed on the next page.",
+                        "**Best Practice:** Use preconnect for third-party resources (CDNs, APIs)."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 17,
+            question: "How do you improve the performance of an HTML page?",
+            answer: [
+                {
+                    type: "list",
+                    content: [
+                        "Minimize HTTP requests (combine files, use sprites).",
+                        "Use async/defer for scripts.",
+                        "Use responsive and optimized images.",
+                        "Enable caching with proper headers.",
+                        "Use CDN for static assets.",
+                        "Use semantic HTML for better parsing.",
+                        "Avoid inline styles and large inline scripts."
+                    ]
+                },
+                {
+                    type: "code",
+                    content: `<!-- Example: preload critical CSS -->
+<link rel="preload" href="styles.css" as="style">`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Measure performance using tools like Lighthouse or WebPageTest.",
+                        "**Best Practice:** Prioritize critical rendering path (CSS/JS blocking)."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 18,
+            question: "What are ARIA roles and why are they important?",
+            answer: [
+                {
+                    type: "text",
+                    content: "ARIA (Accessible Rich Internet Applications) roles and attributes improve accessibility by giving additional meaning to HTML elements for screen readers and assistive technologies."
+                },
+                {
+                    type: "list",
+                    content: [
+                        "role=\"navigation\" → Identifies navigation menus",
+                        "role=\"button\" → Makes non-button elements act like buttons",
+                        "aria-label, aria-hidden, aria-expanded → Provide state and labels"
+                    ]
+                },
+                {
+                    type: "code",
+                    content: `<nav role="navigation" aria-label="Main Menu">
+  <ul>
+    <li><a href="/home">Home</a></li>
+  </ul>
+</nav>
+
+<div role="button" aria-pressed="false" tabindex="0">Click Me</div>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Prefer native HTML elements before ARIA roles (e.g., use <button> not <div role='button'>).",
+                        "**Best Practice:** Use ARIA to enhance, not replace semantics."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 19,
+            question: "How would you make a website screen-reader friendly?",
+            answer: [
+                {
+                    type: "list",
+                    content: [
+                        "Use semantic HTML structure with headings, landmarks (<header>, <main>, <footer>).",
+                        "Provide meaningful alt text for images.",
+                        "Use labels for form controls.",
+                        "Ensure focus states are visible and logical.",
+                        "Use ARIA roles when necessary.",
+                        "Avoid auto-playing media without controls."
+                    ]
+                },
+                {
+                    type: "code",
+                    content: `<label for="email">Email Address</label>
+<input type="email" id="email" name="email" aria-required="true">`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Test with screen readers (NVDA, VoiceOver).",
+                        "**Best Practice:** Maintain a logical tab order for accessibility."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 20,
+            question: "What’s the difference between alt, title, and aria-label attributes?",
+            answer: [
+                {
+                    type: "table",
+                    content: {
+                        headers: ["Attribute", "Purpose", "Visible to User", "Read by Screen Readers"],
+                        rows: [
+
+                            ["alt", "Text alternative for images", "No (unless image fails)", "Yes"],
+                            ["title", "Tooltip on hover", "Yes (on hover)", "Sometimes (inconsistent support)"],
+                            ["aria-label", "Accessible label for any element", "No", "Yes"]
+                        ]
+                    }
+                },
+                {
+                    type: "code",
+                    content: `<img src="logo.png" alt="Company Logo">
+
+<button title="Click to submit the form">Submit</button>
+
+<div role="button" aria-label="Close">X</div>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Always use `alt` for meaningful images.",
+                        "**Best Practice:** Use `title` for extra info (not critical).",
+                        "**Best Practice:** Use `aria-label` when no visible label exists."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 21,
+            question: "What is the difference between localStorage, sessionStorage, and cookies?",
+            answer: [
+                {
+                    type: "text",
+                    content: "These are client-side storage options in HTML5 that allow storing key-value pairs, but they differ in scope, capacity, and usage."
+                },
+                {
+                    type: "table",
+                    content: {
+                        headers: ["Feature", "localStorage", "sessionStorage", "cookies"],
+                        rows: [
+
+                            ["Persistence", "Until manually cleared", "Cleared when tab/browser closes", "Expires based on settings"],
+                            ["Capacity", "~5–10 MB", "~5 MB", "4 KB"],
+                            ["Scope", "Domain-wide", "Per tab/session", "Domain + path"],
+                            ["Accessible by", "JavaScript", "JavaScript", "JavaScript + sent with HTTP requests"]
+                        ]
+                    }
+                },
+                {
+                    type: "code",
+                    content: `// localStorage
+localStorage.setItem("theme", "dark");
+console.log(localStorage.getItem("theme"));
+
+// sessionStorage
+sessionStorage.setItem("sessionUser", "John");
+
+// cookies
+document.cookie = "user=John; expires=Fri, 31 Dec 2025 23:59:59 GMT";`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use localStorage/sessionStorage for client-only data.",
+                        "**Best Practice:** Use cookies for server communication (auth/session tokens)."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 22,
+            question: "What is the Geolocation API in HTML5?",
+            answer: [
+                {
+                    type: "text",
+                    content: "The Geolocation API allows websites to request the user's geographical location using GPS, Wi-Fi, or IP address."
+                },
+                {
+                    type: "code",
+                    content: `navigator.geolocation.getCurrentPosition(
+  (position) => {
+    console.log("Latitude:", position.coords.latitude);
+    console.log("Longitude:", position.coords.longitude);
+  },
+  (error) => {
+    console.error("Error:", error.message);
+  }
+);`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Always ask for user consent before using location.",
+                        "**Best Practice:** Provide fallback content if geolocation is unavailable."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 23,
+            question: "What is the use of the Web Workers API?",
+            answer: [
+                {
+                    type: "text",
+                    content: "Web Workers allow running JavaScript in background threads, preventing UI blocking for heavy computations."
+                },
+                {
+                    type: "code",
+                    content: `// worker.js
+self.onmessage = (e) => {
+  const result = e.data * 2;
+  self.postMessage(result);
+};
+
+// main.js
+const worker = new Worker("worker.js");
+worker.postMessage(5);
+worker.onmessage = (e) => console.log("Result:", e.data);`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use Web Workers for CPU-intensive tasks (image processing, data parsing).",
+                        "**Best Practice:** Avoid DOM manipulation inside workers (not allowed)."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 24,
+            question: "Why are heading tags (<h1>–<h6>) important for SEO and accessibility?",
+            answer: [
+                {
+                    type: "text",
+                    content: "Heading tags define the document structure, improve accessibility for screen readers, and help search engines understand content hierarchy."
+                },
+                {
+                    type: "list",
+                    content: [
+                        "SEO → Helps search engines index page structure.",
+                        "Accessibility → Screen readers use headings for navigation.",
+                        "UX → Provides clear content hierarchy for users."
+                    ]
+                },
+                {
+                    type: "code",
+                    content: `<h1>Main Title</h1>
+<h2>Section Title</h2>
+<h3>Subsection</h3>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use only one `<h1>` per page for the main title.",
+                        "**Best Practice:** Follow a logical order without skipping levels."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 25,
+            question: "What is the difference between relative, absolute, and fixed URLs in <a> or <link> tags?",
+            answer: [
+                {
+                    type: "table",
+                    content: {
+                        headers: ["Type", "Definition", "Example"],
+                        rows: [
+
+                            ["Relative URL", "Relative to current document location", "<a href='about.html'>About</a>"],
+                            ["Absolute URL", "Full path with domain", "<a href='https://example.com/about.html'>About</a>"],
+                            ["Root-relative URL", "Relative to site root", "<a href='/about.html'>About</a>"]
+                        ]
+                    }
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use relative URLs for internal links (portable across environments).",
+                        "**Best Practice:** Use absolute URLs for external links or canonical references."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 26,
+            question: "How does the lang attribute in the <html> tag help accessibility and SEO?",
+            answer: [
+                {
+                    type: "text",
+                    content: "The `lang` attribute specifies the language of the page, helping screen readers pronounce words correctly and improving SEO by indicating language targeting."
+                },
+                {
+                    type: "code",
+                    content: `<html lang="en">
+  <head><title>Example</title></head>
+  <body>Hello World</body>
+</html>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Always set a primary `lang` on the `<html>` element.",
+                        "**Best Practice:** Use `lang` on specific elements for mixed-language content."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 27,
+            question: "What are custom data attributes (data-*)? How are they used?",
+            answer: [
+                {
+                    type: "text",
+                    content: "Custom data attributes allow embedding custom metadata in HTML elements, accessible via JavaScript."
+                },
+                {
+                    type: "code",
+                    content: `<div data-user-id="123" data-role="admin">User Info</div>
+
+<script>
+  const div = document.querySelector("div");
+  console.log(div.dataset.userId); // 123
+  console.log(div.dataset.role);   // admin
+</script>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use `data-*` attributes for extra information not suitable as classes or IDs.",
+                        "**Best Practice:** Avoid storing sensitive data in `data-*`."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 28,
+            question: "Difference between progressive enhancement and graceful degradation in HTML?",
+            answer: [
+                {
+                    type: "table",
+                    content: {
+                        headers: ["Approach", "Definition", "Example"],
+                        rows: [
+
+                            ["Progressive Enhancement", "Start with basic functionality, enhance for modern browsers", "Plain HTML → add CSS/JS"],
+                            ["Graceful Degradation", "Build advanced features, ensure fallback for older browsers", "Modern app → fallback view for old IE"]
+                        ]
+                    }
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Prefer progressive enhancement for accessibility and reliability.",
+                        "**Best Practice:** Use graceful degradation for backward compatibility when required."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 29,
+            question: "How do you ensure cross-browser compatibility for new HTML5 features?",
+            answer: [
+                {
+                    type: "list",
+                    content: [
+                        "Use feature detection (Modernizr, `if ('geolocation' in navigator)`).",
+                        "Provide polyfills for unsupported features.",
+                        "Provide fallback content (e.g., Flash for video in old browsers).",
+                        "Test across multiple browsers/devices."
+                    ]
+                },
+                {
+                    type: "code",
+                    content: `if ("geolocation" in navigator) {
+  // supported
+  navigator.geolocation.getCurrentPosition((pos) => console.log(pos));
+} else {
+  alert("Geolocation not supported, please enter manually.");
+}`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Always code defensively assuming some users lack modern features.",
+                        "**Best Practice:** Use progressive enhancement for better future-proofing."
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: 30,
+            question: "What are Web Components? How do they help in reusability?",
+            answer: [
+                {
+                    type: "text",
+                    content: "Web Components are a set of standards that let you create reusable, encapsulated custom elements using HTML, CSS, and JS."
+                },
+                {
+                    type: "list",
+                    content: [
+                        "Custom Elements → Define new HTML tags.",
+                        "Shadow DOM → Encapsulate styles and markup.",
+                        "HTML Templates → Define reusable chunks of markup."
+                    ]
+                },
+                {
+                    type: "code",
+                    content: `class MyButton extends HTMLElement {
+  constructor() {
+    super();
+    const shadow = this.attachShadow({ mode: "open" });
+    shadow.innerHTML = "<button>Click Me</button>";
+  }
+}
+customElements.define("my-button", MyButton);
+
+// Usage:
+<my-button></my-button>`
+                },
+                {
+                    type: "list",
+                    content: [
+                        "**Best Practice:** Use Web Components for reusable UI elements.",
+                        "**Best Practice:** Combine with frameworks (React/Angular) carefully to avoid conflicts."
+                    ]
+                }
+            ]
+        },
+    ]
 };
 
