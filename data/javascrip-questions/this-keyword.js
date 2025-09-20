@@ -319,182 +319,238 @@ person.greet();`
         ]
     },
     {
-        id: 11,
-        question: "Coding Challenge: What will be the output of this code?",
+        id: 21,
+        question: "Variable vs property – What logs to console?",
         answer: [
             {
                 type: "code",
-                content: `let person = {
-  name: "John",
-  greet: function() {
-    console.log("Hello " + this.name);
+                content: `const object = {
+  message: 'Hello, World!',
+
+  getMessage() {
+    const message = 'Hello, Earth!';
+    return this.message;
   }
 };
 
-setTimeout(person.greet, 1000);`
+console.log(object.getMessage());`,
+                language: "javascript"
             },
             {
                 type: "text",
-                content: `**Explanation:**  
-- The method \`person.greet\` is passed as a callback to \`setTimeout\`.  
-- When executed, it loses its object binding, so \`this\` becomes \`window\` (or \`undefined\` in strict mode).  
-- Therefore, it logs: \`Hello undefined\`.  
-
-**Best Practice:** Always preserve context using \`.bind(person)\` or an arrow function:
-
-\`\`\`js
-setTimeout(person.greet.bind(person), 1000);
-setTimeout(() => person.greet(), 1000);
-\`\`\``
+                content: "Here `this.message` refers to the property `message` on the **object**, not the local variable `message`. Therefore the output is:"
+            },
+            {
+                type: "code",
+                content: `Hello, World!`,
+                language: "text"
+            },
+            {
+                type: "list",
+                content: [
+                    "**Key Concept:** `this` inside a method refers to the object that owns the method.",
+                    "Local variables declared inside the method (`const message = ...`) do not override object properties accessed with `this`."
+                ]
             }
         ]
     },
     {
-        id: 12,
-        question: "Coding Challenge: Fix the broken `this` inside a loop",
+        id: 22,
+        question: "Cat name – What logs to console?",
         answer: [
             {
                 type: "code",
-                content: `function Counter() {
-  this.count = 0;
-  setInterval(function() {
-    this.count++;
-    console.log(this.count);
-  }, 1000);
+                content: `function Pet(name) {
+  this.name = name;
+
+  this.getName = () => this.name;
 }
 
-new Counter();`
+const cat = new Pet('Fluffy');
+
+console.log(cat.getName()); // ?
+const { getName } = cat;
+console.log(getName());     // ?`,
+                language: "javascript"
             },
             {
                 type: "text",
-                content: `**Problem:**  
-- Inside \`setInterval\`, \`this\` no longer refers to the \`Counter\` instance.  
-- It points to \`window\` instead.  
-
-**Fixes:**  
-1. Save \`this\` in a variable:
-\`\`\`js
-function Counter() {
-  this.count = 0;
-  let self = this;
-  setInterval(function() {
-    self.count++;
-    console.log(self.count);
-  }, 1000);
-}
-\`\`\`
-
-2. Use arrow function (preferred):
-\`\`\`js
-function Counter() {
-  this.count = 0;
-  setInterval(() => {
-    this.count++;
-    console.log(this.count);
-  }, 1000);
-}
-\`\`\``
+                content: "The arrow function `this.getName` captures `this` lexically from the constructor function, so it always refers to the instance (`cat`)."
+            },
+            {
+                type: "list",
+                content: [
+                    "`cat.getName()` → logs **Fluffy**",
+                    "`getName()` (destructured) → still logs **Fluffy** because the arrow function preserves lexical `this`."
+                ]
             }
         ]
     },
     {
-        id: 13,
-        question: "Coding Challenge: What will this log?",
+        id: 23,
+        question: "Delayed greeting – What logs to console?",
         answer: [
             {
                 type: "code",
-                content: `const person = {
-  name: "Alice",
-  greet: () => {
-    console.log("Hi " + this.name);
+                content: `const object = {
+  message: 'Hello, World!',
+
+  logMessage() {
+    console.log(this.message);
   }
 };
 
-person.greet();`
+setTimeout(object.logMessage, 1000);`,
+                language: "javascript"
             },
             {
                 type: "text",
-                content: `**Explanation:**  
-- The \`greet\` method is an **arrow function**.  
-- Arrow functions don’t bind their own \`this\`; they inherit it from the enclosing lexical scope (here, global scope).  
-- \`this.name\` is therefore \`undefined\`.  
-
-**Best Practice:** Use **regular functions** for object methods if you need \`this\`.`
+                content: "Here `setTimeout` executes `object.logMessage` as a plain function, so `this` is lost (defaults to `window` in non-strict mode or `undefined` in strict mode)."
+            },
+            {
+                type: "code",
+                content: `undefined`,
+                language: "text"
+            },
+            {
+                type: "list",
+                content: [
+                    "**Fix:** Use `.bind(object)`, an arrow function, or wrap it in another function.",
+                    "`setTimeout(object.logMessage.bind(object), 1000)` → logs **Hello, World!**"
+                ]
             }
         ]
     },
     {
-        id: 14,
-        question: "Coding Challenge: How to fix `this` inside event handlers?",
+        id: 24,
+        question: "Artificial method – How can you call logMessage so it logs 'Hello, World!'?",
         answer: [
             {
                 type: "code",
-                content: `class Button {
-  constructor(label) {
-    this.label = label;
-    document.querySelector("#btn").addEventListener("click", this.handleClick);
-  }
-  handleClick() {
-    console.log("Button clicked:", this.label);
-  }
+                content: `const object = {
+  message: 'Hello, World!'
+};
+
+function logMessage() {
+  console.log(this.message);
 }
 
-new Button("Submit");`
+// Possible solutions:
+logMessage.call(object);
+logMessage.apply(object);
+const boundLog = logMessage.bind(object);
+boundLog();`,
+                language: "javascript"
             },
             {
-                type: "text",
-                content: `**Problem:**  
-- Event listener calls \`handleClick\` without context.  
-- So \`this\` becomes the button DOM element, not the class instance.  
-
-**Fixes:**  
-1. Bind in constructor:
-\`\`\`js
-this.handleClick = this.handleClick.bind(this);
-\`\`\`  
-
-2. Use class fields:
-\`\`\`js
-handleClick = () => {
-  console.log("Button clicked:", this.label);
-};
-\`\`\`  
-
-**Best Practice:** Prefer class fields syntax for React/modern JS apps.`
+                type: "list",
+                content: [
+                    "**.call()** → immediately invokes the function with `this` set to object.",
+                    "**.apply()** → same as call, but arguments are passed as an array.",
+                    "**.bind()** → returns a new function permanently bound to the object."
+                ]
             }
         ]
     },
     {
-        id: 15,
-        question: "Coding Challenge: Explain and fix the issue",
+        id: 25,
+        question: "Greeting and farewell – What logs to console?",
         answer: [
             {
                 type: "code",
-                content: `let person = {
-  name: "Mike",
-  greet: function() {
-    console.log("Hello " + this.name);
+                content: `const object = {
+  who: 'World',
+
+  greet() {
+    return \`Hello, \${this.who}!\`;
+  },
+
+  farewell: () => {
+    return \`Goodbye, \${this.who}!\`;
   }
 };
 
-let greetFn = person.greet;
-greetFn();`
+console.log(object.greet());
+console.log(object.farewell());`,
+                language: "javascript"
+            },
+            {
+                type: "list",
+                content: [
+                    "`object.greet()` → logs **Hello, World!** because `this` refers to the object.",
+                    "`object.farewell()` → logs **Goodbye, undefined!** because arrow functions do not bind their own `this`, they inherit from the outer scope (global)."
+                ]
+            }
+        ]
+    },
+    {
+        id: 26,
+        question: "Tricky length – What logs to console?",
+        answer: [
+            {
+                type: "code",
+                content: `var length = 4;
+function callback() {
+  console.log(this.length);
+}
+
+const object = {
+  length: 5,
+  method(callback) {
+    callback();
+  }
+};
+
+object.method(callback, 1, 2);`,
+                language: "javascript"
             },
             {
                 type: "text",
-                content: `**Explanation:**  
-- \`greetFn\` is just a reference to the function.  
-- When called standalone, it loses the \`person\` binding, so \`this\` is global (or undefined in strict mode).  
-- Output: \`Hello undefined\`.  
+                content: "`callback()` is called as a plain function, not as a method of object, so `this` refers to the global object. In browsers, `this.length` refers to the number of arguments passed to the global context, which is usually **0**."
+            },
+            {
+                type: "code",
+                content: `undefined (in strict mode)\n0 (in browser non-strict mode)`,
+                language: "text"
+            }
+        ]
+    },
+    {
+        id: 27,
+        question: "Calling arguments – What logs to console?",
+        answer: [
+            {
+                type: "code",
+                content: `var length = 4;
+function callback() {
+  console.log(this.length);
+}
 
-**Fix:** Use \`.bind()\`:
-\`\`\`js
-let greetFn = person.greet.bind(person);
-greetFn(); // Hello Mike
-\`\`\`  
+const object = {
+  length: 5,
+  method() {
+    arguments[0]();
+  }
+};
 
-**Best Practice:**  
-- Use \`bind\`, arrow functions, or class fields to avoid context loss.`
+object.method(callback, 1, 2);`,
+                language: "javascript"
+            },
+            {
+                type: "text",
+                content: "Here `arguments[0]()` is invoked as a method on the `arguments` object. Therefore, `this` inside callback refers to the `arguments` object itself."
+            },
+            {
+                type: "code",
+                content: `3`,
+                language: "text"
+            },
+            {
+                type: "list",
+                content: [
+                    "The `arguments` object has a `length` equal to the number of arguments passed (here 3).",
+                    "So `this.length` inside callback logs **3**."
+                ]
             }
         ]
     },

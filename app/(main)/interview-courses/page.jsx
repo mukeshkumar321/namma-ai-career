@@ -51,15 +51,18 @@ export default function InterviewCoursesPage() {
   return (
     <div className="relative mx-auto px-4 py-2">
       <div className="grid-background absolute inset-0 -z-10" />
-      <Tabs defaultValue={tabs[0].name}>
+      <Tabs defaultValue={tabs[0].name} className="space-y-6">
         {/* Tab Header */}
-        <TabsList className="mb-4">
+
+        <TabsList>
           {tabs.map((tab) => (
-            <TabsTrigger key={tab.name} value={tab.name}>
-              <span className="flex items-center gap-2">
-                {tab.icon}
-                {tab.name}
-              </span>
+            <TabsTrigger
+              key={tab.name}
+              value={tab.name}
+              className="flex items-center gap-2"
+            >
+              <span className="hidden md:block">{tab.icon}</span>
+              {tab.name}
             </TabsTrigger>
           ))}
         </TabsList>
