@@ -8,12 +8,14 @@ import { this_keyword_questions } from "./this-keyword";
 import { call_bind_apply_questions } from "./call-bind-apply";
 import { promises_questions } from "./promises";
 import { debouncing_throttling_questions } from "./debouncing-throttling";
-// import { event_propagation_questions } from "./event-propagation";
+import { polyfills_questions } from "./polyfills";
 import { event_loop_questions } from "./event-loop";
 import { prototypes_questions } from "./prototypes";
 import { class_constructors_questions } from "./class-constructors";
 // import { compose_pipe_questions } from "./compose-pipe";
-import { error_handling_questions } from "./error-handling";
+// import { error_handling_questions } from "./error-handling";
+// import { event_propagation_questions } from "./event-propagation";
+
 
 
 export const questions = {
@@ -30,7 +32,8 @@ export const questions = {
     prototypes: prototypes_questions,
     class_constructors: class_constructors_questions,
     debouncing_throttling: debouncing_throttling_questions,
-    error_handling: error_handling_questions,
+    polyfills_questions: polyfills_questions,
+    // error_handling: error_handling_questions,
     // event_propagation: event_propagation_questions,
     // compose_pipe: compose_pipe_questions,
 }
