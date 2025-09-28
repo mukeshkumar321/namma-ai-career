@@ -1,11 +1,11 @@
 export const polyfills_questions = [
-    {
-        id: 1,
-        question: "Polyfill for Array.prototype.map",
-        answer: [
-            {
-                type: "code",
-                content: `Array.prototype.myMap = function(callback, thisArg) {
+  {
+    id: 1,
+    question: "Polyfill for Array.prototype.map",
+    answer: [
+      {
+        type: "code",
+        content: `Array.prototype.myMap = function(callback, thisArg) {
   if (typeof callback !== "function") {
     throw new TypeError(callback + " is not a function");
   }
@@ -17,25 +17,25 @@ export const polyfills_questions = [
   }
   return result;
 };`,
-                language: "javascript"
-            },
-            {
-                type: "list",
-                content: [
-                    "✅ Preserves holes in sparse arrays.",
-                    "✅ Supports `thisArg` for context.",
-                    "✅ Interviewers check if you know how `map` internally iterates."
-                ]
-            }
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Preserves holes in sparse arrays.",
+          "✅ Supports `thisArg` for context.",
+          "✅ Interviewers check if you know how `map` internally iterates."
         ]
-    },
-    {
-        id: 2,
-        question: "Polyfill for Array.prototype.filter",
-        answer: [
-            {
-                type: "code",
-                content: `Array.prototype.myFilter = function(callback, thisArg) {
+      }
+    ]
+  },
+  {
+    id: 2,
+    question: "Polyfill for Array.prototype.filter",
+    answer: [
+      {
+        type: "code",
+        content: `Array.prototype.myFilter = function(callback, thisArg) {
   if (typeof callback !== "function") {
     throw new TypeError(callback + " is not a function");
   }
@@ -47,24 +47,24 @@ export const polyfills_questions = [
   }
   return result;
 };`,
-                language: "javascript"
-            },
-            {
-                type: "list",
-                content: [
-                    "✅ Returns only elements where callback returns true.",
-                    "✅ Must check `i in this` for sparse arrays."
-                ]
-            }
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Returns only elements where callback returns true.",
+          "✅ Must check `i in this` for sparse arrays."
         ]
-    },
-    {
-        id: 3,
-        question: "Polyfill for Array.prototype.reduce",
-        answer: [
-            {
-                type: "code",
-                content: `Array.prototype.myReduce = function(callback, initialValue) {
+      }
+    ]
+  },
+  {
+    id: 3,
+    question: "Polyfill for Array.prototype.reduce",
+    answer: [
+      {
+        type: "code",
+        content: `Array.prototype.myReduce = function(callback, initialValue) {
   if (typeof callback !== "function") {
     throw new TypeError(callback + " is not a function");
   }
@@ -84,24 +84,24 @@ export const polyfills_questions = [
   }
   return accumulator;
 };`,
-                language: "javascript"
-            },
-            {
-                type: "list",
-                content: [
-                    "✅ Handles missing `initialValue` correctly.",
-                    "✅ Interviewers check if you know error cases."
-                ]
-            }
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Handles missing `initialValue` correctly.",
+          "✅ Interviewers check if you know error cases."
         ]
-    },
-    {
-        id: 4,
-        question: "Polyfill for Array.prototype.forEach",
-        answer: [
-            {
-                type: "code",
-                content: `Array.prototype.myForEach = function(callback, thisArg) {
+      }
+    ]
+  },
+  {
+    id: 4,
+    question: "Polyfill for Array.prototype.forEach",
+    answer: [
+      {
+        type: "code",
+        content: `Array.prototype.myForEach = function(callback, thisArg) {
   if (typeof callback !== "function") {
     throw new TypeError(callback + " is not a function");
   }
@@ -111,24 +111,173 @@ export const polyfills_questions = [
     }
   }
 };`,
-                language: "javascript"
-            },
-            {
-                type: "list",
-                content: [
-                    "✅ Executes callback for each element.",
-                    "✅ Always returns `undefined` like the real `forEach`."
-                ]
-            }
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Executes callback for each element.",
+          "✅ Always returns `undefined` like the real `forEach`."
         ]
-    },
-    {
-        id: 5,
-        question: "Polyfill for Function.prototype.call",
-        answer: [
-            {
-                type: "code",
-                content: `Function.prototype.myCall = function(context, ...args) {
+      }
+    ]
+  },
+  {
+    id: 10,
+    question: "Polyfill for Array.prototype.includes",
+    answer: [
+      {
+        type: "code",
+        content: `Array.prototype.myIncludes = function(value, fromIndex = 0) {
+  if (this == null) throw new TypeError("Array.prototype.includes called on null or undefined");
+  const len = this.length >>> 0;
+  if (len === 0) return false;
+
+  let i = Math.max(fromIndex >= 0 ? fromIndex : len + fromIndex, 0);
+  while (i < len) {
+    if (this[i] === value || (Number.isNaN(this[i]) && Number.isNaN(value))) {
+      return true;
+    }
+    i++;
+  }
+  return false;
+};`,
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Handles NaN correctly (unlike indexOf).",
+          "✅ Supports negative indices."
+        ]
+      }
+    ]
+  },
+  {
+    id: 13,
+    question: "Polyfill for Array.prototype.find",
+    answer: [
+      {
+        type: "code",
+        content: `Array.prototype.myFind = function(callback, thisArg) {
+  if (typeof callback !== "function") {
+    throw new TypeError(callback + " is not a function");
+  }
+  for (let i = 0; i < this.length; i++) {
+    if (i in this) {
+      if (callback.call(thisArg, this[i], i, this)) {
+        return this[i];
+      }
+    }
+  }
+  return undefined;
+};`,
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Returns the **first element** that satisfies the callback.",
+          "✅ Returns `undefined` if no element matches.",
+          "✅ Must check `i in this` to skip holes in sparse arrays."
+        ]
+      }
+    ]
+  },
+  {
+    id: 14,
+    question: "Polyfill for Array.prototype.some",
+    answer: [
+      {
+        type: "code",
+        content: `Array.prototype.mySome = function(callback, thisArg) {
+  if (typeof callback !== "function") {
+    throw new TypeError(callback + " is not a function");
+  }
+  for (let i = 0; i < this.length; i++) {
+    if (i in this && callback.call(thisArg, this[i], i, this)) {
+      return true;
+    }
+  }
+  return false;
+};`,
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Returns `true` if **at least one** element passes the test.",
+          "✅ Short-circuits once a match is found.",
+          "✅ Skips holes in sparse arrays."
+        ]
+      }
+    ]
+  },
+  {
+    id: 15,
+    question: "Polyfill for Array.prototype.every",
+    answer: [
+      {
+        type: "code",
+        content: `Array.prototype.myEvery = function(callback, thisArg) {
+  if (typeof callback !== "function") {
+    throw new TypeError(callback + " is not a function");
+  }
+  for (let i = 0; i < this.length; i++) {
+    if (i in this && !callback.call(thisArg, this[i], i, this)) {
+      return false;
+    }
+  }
+  return true;
+};`,
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Returns `true` if **all elements** pass the test.",
+          "✅ Short-circuits when a failure is found.",
+          "✅ Empty arrays always return `true` (important edge case)."
+        ]
+      }
+    ]
+  },
+  {
+    id: 16,
+    question: "Polyfill for Array.prototype.findIndex",
+    answer: [
+      {
+        type: "code",
+        content: `Array.prototype.myFindIndex = function(callback, thisArg) {
+  if (typeof callback !== "function") {
+    throw new TypeError(callback + " is not a function");
+  }
+  for (let i = 0; i < this.length; i++) {
+    if (i in this && callback.call(thisArg, this[i], i, this)) {
+      return i;
+    }
+  }
+  return -1;
+};`,
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Returns the **index of the first element** that satisfies the callback.",
+          "✅ Returns `-1` if no element matches.",
+          "✅ Skips holes in sparse arrays (same as `find`)."
+        ]
+      }
+    ]
+  },
+  {
+    id: 5,
+    question: "Polyfill for Function.prototype.call",
+    answer: [
+      {
+        type: "code",
+        content: `Function.prototype.myCall = function(context, ...args) {
   if (typeof this !== "function") {
     throw new TypeError(this + " is not callable");
   }
@@ -139,24 +288,24 @@ export const polyfills_questions = [
   delete context[fnSymbol];
   return result;
 };`,
-                language: "javascript"
-            },
-            {
-                type: "list",
-                content: [
-                    "✅ Attaches function to context temporarily.",
-                    "✅ Supports spreading arguments."
-                ]
-            }
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Attaches function to context temporarily.",
+          "✅ Supports spreading arguments."
         ]
-    },
-    {
-        id: 6,
-        question: "Polyfill for Function.prototype.apply",
-        answer: [
-            {
-                type: "code",
-                content: `Function.prototype.myApply = function(context, args) {
+      }
+    ]
+  },
+  {
+    id: 6,
+    question: "Polyfill for Function.prototype.apply",
+    answer: [
+      {
+        type: "code",
+        content: `Function.prototype.myApply = function(context, args) {
   if (typeof this !== "function") {
     throw new TypeError(this + " is not callable");
   }
@@ -167,24 +316,24 @@ export const polyfills_questions = [
   delete context[fnSymbol];
   return result;
 };`,
-                language: "javascript"
-            },
-            {
-                type: "list",
-                content: [
-                    "✅ Similar to `call`, but takes arguments as an array.",
-                    "✅ Must handle `args` being `undefined`."
-                ]
-            }
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Similar to `call`, but takes arguments as an array.",
+          "✅ Must handle `args` being `undefined`."
         ]
-    },
-    {
-        id: 7,
-        question: "Polyfill for Function.prototype.bind",
-        answer: [
-            {
-                type: "code",
-                content: `Function.prototype.myBind = function(context, ...args1) {
+      }
+    ]
+  },
+  {
+    id: 7,
+    question: "Polyfill for Function.prototype.bind",
+    answer: [
+      {
+        type: "code",
+        content: `Function.prototype.myBind = function(context, ...args1) {
   if (typeof this !== "function") {
     throw new TypeError(this + " is not callable");
   }
@@ -193,25 +342,25 @@ export const polyfills_questions = [
     return fn.apply(context, [...args1, ...args2]);
   };
 };`,
-                language: "javascript"
-            },
-            {
-                type: "list",
-                content: [
-                    "✅ Returns a new function with bound context.",
-                    "✅ Supports partial application (preset arguments).",
-                    "❌ This simple version doesn’t handle `new` operator properly."
-                ]
-            }
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Returns a new function with bound context.",
+          "✅ Supports partial application (preset arguments).",
+          "❌ This simple version doesn’t handle `new` operator properly."
         ]
-    },
-    {
-        id: 8,
-        question: "Polyfill for Promise (basic implementation)",
-        answer: [
-            {
-                type: "code",
-                content: `function MyPromise(executor) {
+      }
+    ]
+  },
+  {
+    id: 8,
+    question: "Polyfill for Promise (basic implementation)",
+    answer: [
+      {
+        type: "code",
+        content: `function MyPromise(executor) {
   let onResolve, onReject;
   let fulfilled = false, rejected = false, value;
 
@@ -241,25 +390,25 @@ export const polyfills_questions = [
 
   executor(resolve, reject);
 }`,
-                language: "javascript"
-            },
-            {
-                type: "list",
-                content: [
-                    "✅ Very simplified Promise polyfill.",
-                    "✅ Supports `.then()` and `.catch()`.",
-                    "❌ Doesn’t support chaining or async jobs."
-                ]
-            }
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Very simplified Promise polyfill.",
+          "✅ Supports `.then()` and `.catch()`.",
+          "❌ Doesn’t support chaining or async jobs."
         ]
-    },
-    {
-        id: 9,
-        question: "Polyfill for Object.assign",
-        answer: [
-            {
-                type: "code",
-                content: `Object.myAssign = function(target, ...sources) {
+      }
+    ]
+  },
+  {
+    id: 9,
+    question: "Polyfill for Object.assign",
+    answer: [
+      {
+        type: "code",
+        content: `Object.myAssign = function(target, ...sources) {
   if (target == null) throw new TypeError("Cannot convert undefined or null to object");
   const to = Object(target);
   for (const src of sources) {
@@ -273,79 +422,48 @@ export const polyfills_questions = [
   }
   return to;
 };`,
-                language: "javascript"
-            },
-            {
-                type: "list",
-                content: [
-                    "✅ Shallow copies own enumerable properties.",
-                    "✅ Throws error if target is null/undefined."
-                ]
-            }
+        language: "javascript"
+      },
+      {
+        type: "list",
+        content: [
+          "✅ Shallow copies own enumerable properties.",
+          "✅ Throws error if target is null/undefined."
         ]
-    },
-    {
-        id: 10,
-        question: "Polyfill for Array.prototype.includes",
-        answer: [
-            {
-                type: "code",
-                content: `Array.prototype.myIncludes = function(value, fromIndex = 0) {
-  if (this == null) throw new TypeError("Array.prototype.includes called on null or undefined");
-  const len = this.length >>> 0;
-  if (len === 0) return false;
-
-  let i = Math.max(fromIndex >= 0 ? fromIndex : len + fromIndex, 0);
-  while (i < len) {
-    if (this[i] === value || (Number.isNaN(this[i]) && Number.isNaN(value))) {
-      return true;
-    }
-    i++;
-  }
-  return false;
-};`,
-                language: "javascript"
-            },
-            {
-                type: "list",
-                content: [
-                    "✅ Handles NaN correctly (unlike indexOf).",
-                    "✅ Supports negative indices."
-                ]
-            }
+      }
+    ]
+  },
+  {
+    id: 11,
+    question: "Best Practices for Writing and Using Polyfills in JavaScript",
+    answer: [
+      {
+        type: "list",
+        content: [
+          "**Feature Detection First:** Always check if a method or feature exists before writing a polyfill. This avoids overwriting native implementations.\nExample:\n```js\nif (!Array.prototype.myMap) {\n  Array.prototype.myMap = function(callback) { /* ... */ };\n}\n```",
+          "**Avoid Overwriting Built-ins in Production:** Never override native implementations in production unless absolutely necessary, as it may break browser behavior.",
+          "**Use Polyfills Only When Needed:** Only include polyfills for features not supported in the target browsers/environments to reduce bundle size.",
+          "**Shallow vs Deep Copy Awareness:** When writing polyfills for objects or arrays, know whether a shallow copy (e.g., Object.assign) or deep copy is required.",
+          "**Preserve Original Behavior:** Polyfills must follow the exact behavior of the native method, including argument handling, `this` binding, and edge cases.",
+          "**Test for Edge Cases:** Make sure polyfills handle empty arrays, sparse arrays, `null`/`undefined` values, and special cases like `NaN` for Array.includes.",
+          "**Performance Awareness:** Polyfills are usually slower than native implementations; avoid heavy computations in polyfills if possible.",
+          "**Use Trusted Polyfill Libraries:** If possible, use well-tested polyfill libraries (like core-js) instead of writing from scratch for complex features."
         ]
-    },
-    {
-        id: 11,
-        question: "Best Practices for Writing and Using Polyfills in JavaScript",
-        answer: [
-            {
-                type: "list",
-                content: [
-                    "**Feature Detection First:** Always check if a method or feature exists before writing a polyfill. This avoids overwriting native implementations.\nExample:\n```js\nif (!Array.prototype.myMap) {\n  Array.prototype.myMap = function(callback) { /* ... */ };\n}\n```",
-                    "**Avoid Overwriting Built-ins in Production:** Never override native implementations in production unless absolutely necessary, as it may break browser behavior.",
-                    "**Use Polyfills Only When Needed:** Only include polyfills for features not supported in the target browsers/environments to reduce bundle size.",
-                    "**Shallow vs Deep Copy Awareness:** When writing polyfills for objects or arrays, know whether a shallow copy (e.g., Object.assign) or deep copy is required.",
-                    "**Preserve Original Behavior:** Polyfills must follow the exact behavior of the native method, including argument handling, `this` binding, and edge cases.",
-                    "**Test for Edge Cases:** Make sure polyfills handle empty arrays, sparse arrays, `null`/`undefined` values, and special cases like `NaN` for Array.includes.",
-                    "**Performance Awareness:** Polyfills are usually slower than native implementations; avoid heavy computations in polyfills if possible.",
-                    "**Use Trusted Polyfill Libraries:** If possible, use well-tested polyfill libraries (like core-js) instead of writing from scratch for complex features."
-                ]
-            }
-        ]
-    },
-    {
-        id: 12,
-        question: "Advanced Promise Polyfill supporting chaining, all, race, allSettled, and any",
-        answer: [
-            {
-                type: "text",
-                content: `This polyfill demonstrates how to implement a Promise from scratch with basic chaining and popular static methods: \`.all\`, \`.race\`, \`.allSettled\`, and \`.any\`.  
+      }
+    ]
+  },
+  {
+    id: 12,
+    question: "Advanced Promise Polyfill supporting chaining, all, race, allSettled, and any",
+    answer: [
+      {
+        type: "text",
+        content: `This polyfill demonstrates how to implement a Promise from scratch with basic chaining and popular static methods: \`.all\`, \`.race\`, \`.allSettled\`, and \`.any\`.  
 It’s suitable for interview purposes to show understanding of asynchronous handling.`
-            },
-            {
-                type: "code",
-                content: `function MyPromise(executor) {
+      },
+      {
+        type: "code",
+        content: `function MyPromise(executor) {
   let onResolve = [];
   let onReject = [];
   let state = 'pending';
@@ -462,16 +580,16 @@ MyPromise.all([p1, p2]).then(console.log); // [10, 20]
 MyPromise.race([p1, p2]).then(console.log); // 10
 MyPromise.allSettled([p1, p2]).then(console.log); 
 MyPromise.any([p1, p2]).then(console.log); // 10`,
-                language: "javascript"
-            },
-            {
-                type: "text",
-                content: `**Best Practices:**  
+        language: "javascript"
+      },
+      {
+        type: "text",
+        content: `**Best Practices:**  
 - Only polyfill advanced methods if targeting environments that lack native Promises.  
 - Use the native \`Promise\` in modern browsers for performance.  
 - Always handle errors using \`.catch()\` to avoid unhandled rejections.  
 - Understand that this polyfill is simplified and doesn’t handle every edge case of ES6 Promises (e.g., nested asynchronous calls in \`.then\`).`
-            }
-        ]
-    },
+      }
+    ]
+  },
 ]
